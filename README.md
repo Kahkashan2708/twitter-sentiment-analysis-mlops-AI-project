@@ -41,8 +41,8 @@ Test accuracy: 0.8122
            0       0.82      0.80      0.81    160000
            2       0.80      0.83      0.81    160000
     accuracy                           0.81    320000
-   macro avg       0.81      0.81      0.81    320000
-   weighted avg    0.81      0.81      0.81    320000
+    macro avg       0.81      0.81      0.81    320000  
+    weighted avg    0.81      0.81      0.81    320000
 
 Saved trained model to twitter-sentiment-analysis-mlops-AI-project\models\model.joblib  
 
