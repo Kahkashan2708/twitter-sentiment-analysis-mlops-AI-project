@@ -3,35 +3,44 @@ import os
 from src.data_ingest import ingest_csv
 from src.preprocess import run_preprocess
 from src.train import train_model
-
-# get project root automatically (one level up from src/)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from src.evaluate import evaluate_model
 
 def main():
-    print(">>> run_pipeline.py has started")
     print(" Starting Twitter Sentiment Analysis Pipeline...")
-
-    # Paths
-    raw_input = os.path.join(PROJECT_ROOT, "data", "raw", "tweets_clean.csv")
-    raw_out   = os.path.join(PROJECT_ROOT, "data", "raw")
-    processed_out = os.path.join(PROJECT_ROOT, "data", "processed")
-    model_out = os.path.join(PROJECT_ROOT, "models", "model.joblib")
 
     # 1. Ingest
     print("\n[Step 1] Ingesting dataset...")
-    raw_path = ingest_csv(raw_input, out_dir=raw_out)
+    raw_path = ingest_csv(
+        os.path.join("data", "raw", "tweets_clean.csv"),
+        out_dir=os.path.join("data", "raw")
+    )
 
     # 2. Preprocess
     print("\n[Step 2] Preprocessing dataset...")
-    paths = run_preprocess(raw_path, out_dir=processed_out)
+    paths = run_preprocess(raw_path, out_dir=os.path.join("data", "processed"))
 
     # 3. Train
     print("\n[Step 3] Training model...")
-    model, acc = train_model(paths["train_path"], paths["test_path"], model_out=model_out)
+    model, acc = train_model(
+        paths["train_path"],
+        paths["test_path"],
+        model_out=os.path.join("models", "model.joblib")
+    )
 
-    print("\n Pipeline finished successfully!")
-    print(f"Model saved at: {model_out}")
+    print("\n Training finished")
+    print(f"Model saved at: models/model.joblib")
     print(f"Test Accuracy: {acc:.4f}")
 
+    # 4. Evaluate
+    print("\n[Step 4] Evaluating model...")
+    evaluate_model(
+        model_path=os.path.join("models", "model.joblib"),
+        test_path=paths["test_path"],
+        report_dir=os.path.join("reports")
+    )
+
+    print("\n Pipeline finished successfully! Reports are saved in the 'reports/' folder.")
+
 if __name__ == "__main__":
+    print(">>> run_pipeline.py has started")
     main()

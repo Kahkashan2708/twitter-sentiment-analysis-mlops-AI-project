@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Sentiment Analysis 🚀</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff9800;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            font-size: 1em;
+            margin-left: 10px;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 1.5em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Twitter Sentiment Analysis 🚀</h1>
+    <p>Enter a tweet below to analyze its sentiment:</p>
+
+    <form method="post" action="/predict_ui">
+        <input type="text" name="text" placeholder="Type a tweet..." required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if sentiment %}
+        <div class="result">
+            <p><b>Tweet:</b> {{ text }}</p>
+            <p><b>Sentiment:</b> {{ sentiment }} {{ emoji }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
