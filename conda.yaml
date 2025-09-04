@@ -1,0 +1,17 @@
+name: twitter-sentiment-env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - scikit-learn=1.5.1
+  - pandas
+  - joblib
+  - fastapi
+  - uvicorn
+  - jinja2
+  - seaborn   
+  - pip
+  - pip:
+      - mlflow
+      - python-multipart
