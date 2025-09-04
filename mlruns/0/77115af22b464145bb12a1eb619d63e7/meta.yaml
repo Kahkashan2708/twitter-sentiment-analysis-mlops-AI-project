@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Rajnish/Desktop/kashish/twitter-sentiment-analysis-mlops-AI-project/mlruns/0/77115af22b464145bb12a1eb619d63e7/artifacts
+end_time: 1756996849393
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 77115af22b464145bb12a1eb619d63e7
+run_name: agreeable-midge-43
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756996839801
+status: 3
+tags: []
+user_id: Rajnish
