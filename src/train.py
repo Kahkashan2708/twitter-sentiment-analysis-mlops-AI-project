@@ -36,13 +36,13 @@ def train_model(train_csv, test_csv, model_out="../models/model.joblib"):
     recall = recall_score(test['label'], preds, average="weighted", zero_division=0)
     f1 = f1_score(test['label'], preds, average="weighted", zero_division=0)
 
-    print(f"\n✅ Test accuracy: {acc:.4f}")
+    print(f"\n Test accuracy: {acc:.4f}")
     print(classification_report(test['label'], preds))
 
     # --- Save Best Model Locally ---
     os.makedirs(os.path.dirname(model_out), exist_ok=True)
     joblib.dump(gs.best_estimator_, model_out)
-    print(f"📂 Saved trained model to {model_out}")
+    print(f" Saved trained model to {model_out}")
 
     # --- MLflow Logging ---
     with mlflow.start_run():
@@ -57,6 +57,19 @@ def train_model(train_csv, test_csv, model_out="../models/model.joblib"):
         mlflow.sklearn.log_model(gs.best_estimator_, "model")
 
     return gs.best_estimator_, acc
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 4:
+        print("Usage: python -m src.train <train_csv> <test_csv> <model_out>")
+        sys.exit(1)
+
+    train_csv = sys.argv[1]
+    test_csv = sys.argv[2]
+    model_out = sys.argv[3]
+
+    os.makedirs(os.path.dirname(model_out), exist_ok=True)  # ensure models/ exists
+    train_model(train_csv, test_csv, model_out)
 
 
 # import joblib

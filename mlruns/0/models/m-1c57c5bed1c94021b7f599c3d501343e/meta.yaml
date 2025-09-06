@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Rajnish/Desktop/kashish/twitter-sentiment-analysis-mlops-AI-project/mlruns/0/models/m-1c57c5bed1c94021b7f599c3d501343e/artifacts
+creation_timestamp: 1757172438836
+experiment_id: '0'
+last_updated_timestamp: 1757172450279
+model_id: m-1c57c5bed1c94021b7f599c3d501343e
+model_type: null
+name: model
+source_run_id: e6d84cfff0234ce4bdbf7b6beb38d039
+status: 2
+status_message: null

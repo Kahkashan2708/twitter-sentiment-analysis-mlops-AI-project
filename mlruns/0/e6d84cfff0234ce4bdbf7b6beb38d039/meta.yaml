@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Rajnish/Desktop/kashish/twitter-sentiment-analysis-mlops-AI-project/mlruns/0/e6d84cfff0234ce4bdbf7b6beb38d039/artifacts
+end_time: 1757172450330
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e6d84cfff0234ce4bdbf7b6beb38d039
+run_name: fearless-fox-585
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757171551375
+status: 3
+tags: []
+user_id: Rajnish

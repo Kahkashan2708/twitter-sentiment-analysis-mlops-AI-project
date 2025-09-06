@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Rajnish/Desktop/kashish/twitter-sentiment-analysis-mlops-AI-project/mlruns/0/d4be765837a74a639b54fd580e06d992/artifacts
+end_time: 1757173913134
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d4be765837a74a639b54fd580e06d992
+run_name: learned-fowl-681
+run_uuid: d4be765837a74a639b54fd580e06d992
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757173888665
+status: 3
+tags: []
+user_id: Rajnish
