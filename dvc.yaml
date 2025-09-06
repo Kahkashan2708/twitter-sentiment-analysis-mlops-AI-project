@@ -1,4 +1,15 @@
-  evaluate:
+stages:
+  train:
+    cmd: python src/train.py data/processed/train.csv data/processed/test.csv models/model.joblib
+    deps:
+      - src/train.py
+      - src/features.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+    outs:
+      - models/model.joblib
+
+    evaluate:
     cmd: python -m src.evaluate models/model.joblib data/processed/test.csv
     deps:
       - src/evaluate.py
