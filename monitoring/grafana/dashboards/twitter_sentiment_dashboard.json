@@ -1,0 +1,58 @@
+{
+  "id": null,
+  "title": "Twitter Sentiment Analysis API",
+  "tags": ["fastapi", "ml", "prometheus"],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Request Count per Endpoint",
+      "targets": [
+        {
+          "expr": "sum by (endpoint) (rate(request_count_total[1m]))",
+          "legendFormat": "{{endpoint}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Latency (95th Percentile)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(request_latency_seconds_bucket[5m])) by (le, endpoint))",
+          "legendFormat": "{{endpoint}}"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Prediction Count per Sentiment",
+      "targets": [
+        {
+          "expr": "sum by (sentiment) (rate(prediction_count_total[1m]))",
+          "legendFormat": "{{sentiment}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "piechart",
+      "title": "Prediction Distribution (Pie)",
+      "targets": [
+        {
+          "expr": "sum by (sentiment) (prediction_count_total)"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "options": {
+        "legend": { "show": true, "displayMode": "list" },
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      }
+    }
+  ]
+}
