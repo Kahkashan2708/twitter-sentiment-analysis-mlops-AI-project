@@ -1,14 +1,3 @@
-stages:
-  train:
-    cmd: python -m src.train data/processed/train.csv data/processed/test.csv models/model.joblib
-    deps:
-      - src/train.py
-      - src/features.py
-      - data/processed/train.csv
-      - data/processed/test.csv
-    outs:
-      - models/model.joblib
-
   evaluate:
     cmd: python -m src.evaluate models/model.joblib data/processed/test.csv
     deps:
@@ -16,4 +5,6 @@ stages:
       - models/model.joblib
       - data/processed/test.csv
     outs:
-      - artifacts/confusion_matrix.png
+      - reports/figures/confusion_matrix.png
+      - reports/metrics.json
+      - reports/classification_report.txt
