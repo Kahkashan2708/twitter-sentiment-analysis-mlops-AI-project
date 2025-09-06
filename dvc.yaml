@@ -16,6 +16,4 @@ stages:
       - models/model.joblib
       - data/processed/test.csv
     outs:
-      - reports/figures/confusion_matrix.png
-      - reports/metrics.json
-      - reports/classification_report.txt
+      - reports/
